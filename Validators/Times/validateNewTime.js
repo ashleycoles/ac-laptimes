@@ -11,17 +11,23 @@ const validateNewTime = (req, res, next) => {
         });
     }
 
+    newTime.uid = ObjectId(newTime.uid);
+
     if(!ObjectId.isValid(newTime.tid)) {
         return res.status(500).json({
             error: "Missing field: tid"
         });
     }
 
+    newTime.tid = ObjectId(newTime.tid);
+
     if(!ObjectId.isValid(newTime.cid)) {
         return res.status(500).json({
             error: "Missing field: cid"
         });
     }
+
+    newTime.cid = ObjectId(newTime.cid);
 
     var timeRegex = new RegExp("[0-9]{2}:[0-9]{2}.[0-9]{1,3}");
 
