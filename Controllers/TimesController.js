@@ -11,16 +11,21 @@ const addTime = (req, res) => {
 };
 
 const getAllTimes = (req, res) => {
-    TimesService.findAllTimes().then((result) => {
-        res.json({
-            status: "success",
-            data: result
-        })
-    })
-};
+    let query = {};
 
-const getTimesByUser = (req, res) => {
-    TimesService.findTimesByUser(req.params.uid).then((result) => {
+    if (req.query.uid) {
+        query.uid = req.query.uid;
+    }
+
+    if (req.query.tid) {
+        query.tid = req.query.tid;
+    }
+
+    if (req.query.cid) {
+        query.cid = req.query.cid;
+    }
+
+    TimesService.findAllTimes(query).then((result) => {
         res.json({
             status: "success",
             data: result
@@ -30,4 +35,3 @@ const getTimesByUser = (req, res) => {
 
 module.exports.addTime = addTime;
 module.exports.getAllTimes = getAllTimes;
-module.exports.getTimesByUser = getTimesByUser;
