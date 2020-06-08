@@ -7,10 +7,12 @@ const validateNewTime = require('../Validators/Times/validateNewTime');
 const validateNewUser = require('../Validators/Users/validateNewUser');
 const validateNewTrack = require('../Validators/Tracks/validateNewTrack');
 const validateNewCar = require('../Validators/Cars/validateNewCar');
+const validateTimesByUser = require('../Validators/Times/validateTimesByUser');
 
 const routes = (app) => {
-    app.get('/times', TimesController.getAllTimes);
     app.post('/times', validateNewTime, TimesController.addTime);
+    app.get('/times', TimesController.getAllTimes);
+    app.get('/times/:uid', validateTimesByUser, TimesController.getTimesByUser);
 
     app.post('/users', validateNewUser, UsersController.addUser);
 

@@ -17,7 +17,7 @@ const addTime = async (time) => {
     } finally {
         client.close();
     }
-}
+};
 
 const findAllTimes = async () => {
     const client = await getMongoConnection();
@@ -29,16 +29,35 @@ const findAllTimes = async () => {
     try {
         const db = client.db("times");
         let collection = db.collection('times');
-        let query = {}
-        let res = await collection.find(query).toArray();
-        return res;
+        let query = {};
+        return await collection.find(query).toArray();
     } catch (err) {
         console.log(err);
     } finally {
         client.close();
     }
-}
+};
+
+const findTimesByUser = async (uid) => {
+    const client = await getMongoConnection();
+
+    if (!client) {
+        return;
+    }
+
+    try {
+        const db = client.db("times");
+        let collection = db.collection('times');
+        let query = {uid: uid};
+        return await collection.find(query).toArray();;
+    } catch (err) {
+        console.log(err);
+    } finally {
+        client.close();
+    }
+};
 
 
 module.exports.addTime = addTime;
 module.exports.findAllTimes = findAllTimes;
+module.exports.findTimesByUser = findTimesByUser;
