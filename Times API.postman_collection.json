@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "f0e5fdfb-75d3-4f24-877f-38db406960a8",
+		"name": "Times API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "New User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE1OTA2NTk4MDIsImV4cCI6MTU5MDY3MDYwMn0.hEDThhEM0cM18KrQ13TZFPG3fI4y-LLRZ0UD5h89iKE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"John Doe\",\n\t\"email\": \"ashley@acoles.co.uk\",\n\t\"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "localhost:4000/Users",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "Bob",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tracks",
+			"item": [
+				{
+					"name": "New Track",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE1OTA2NTk4MDIsImV4cCI6MTU5MDY3MDYwMn0.hEDThhEM0cM18KrQ13TZFPG3fI4y-LLRZ0UD5h89iKE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Silverstone International\"\n}"
+						},
+						"url": {
+							"raw": "localhost:4000/tracks",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"tracks"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "Bob",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "New Car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE1OTA2NTk4MDIsImV4cCI6MTU5MDY3MDYwMn0.hEDThhEM0cM18KrQ13TZFPG3fI4y-LLRZ0UD5h89iKE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"make\": \"BMW\",\n\t\"model\": \"Z4 GT3\"\n}"
+						},
+						"url": {
+							"raw": "localhost:4000/cars",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"cars"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "Bob",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Times",
+			"item": [
+				{
+					"name": "New Time",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE1OTA2NTk4MDIsImV4cCI6MTU5MDY3MDYwMn0.hEDThhEM0cM18KrQ13TZFPG3fI4y-LLRZ0UD5h89iKE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"uid\": \"5ede0971fa0e840dc08a0066\",\n\t\"tid\": \"5ede0bbd724dca0e2d847d7e\",\n\t\"cid\": \"5ede0edbb869870fde2ab5fa\",\n\t\"time\": \"01:06.595\"\n}"
+						},
+						"url": {
+							"raw": "localhost:4000/times",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"times"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "Bob",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
