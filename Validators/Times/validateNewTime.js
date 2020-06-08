@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 const validateNewTime = (req, res, next) => {
 
-    let newTime = lodash.pick(req.body, ['uid', 'tid', 'time']);
+    let newTime = lodash.pick(req.body, ['uid', 'tid', 'cid', 'time']);
 
     if(ObjectId.isValid(newTime.uid)) {
         return res.status(500).json({
@@ -14,6 +14,12 @@ const validateNewTime = (req, res, next) => {
     if(ObjectId.isValid(newTime.tid)) {
         return res.status(500).json({
             error: "Missing field: tid"
+        });
+    }
+
+    if(ObjectId.isValid(newTime.cid)) {
+        return res.status(500).json({
+            error: "Missing field: cid"
         });
     }
 
