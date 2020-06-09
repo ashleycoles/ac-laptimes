@@ -1,4 +1,5 @@
 const UsersService = require('../Services/Users/UsersService');
+const bcrypt = require('bcrypt');
 
 const addUser = (req, res) => {
     UsersService.addUser(req.body).then((result) => {
@@ -10,4 +11,22 @@ const addUser = (req, res) => {
     })
 };
 
+const loginUser = (req, res) => {
+    UsersService.loginUser(req.body).then((foundUser) => {
+        if (foundUser) {
+            // ToDo: Put this somewhere better
+           bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
+               if (result) {
+                   res.json({
+                       status: "success",
+                       message: "account logged in",
+                       data: foundUser._id
+                   });
+               }
+           });
+        }
+    })
+};
+
 module.exports.addUser = addUser;
+module.exports.loginUser = loginUser;

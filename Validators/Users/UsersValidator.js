@@ -1,7 +1,6 @@
 const lodash = require('lodash');
 
 const validateNewUser = (req, res, next) => {
-
     let newUser = lodash.pick(req.body, ['name', 'email', 'password']);
 
     let name = newUser.name;
@@ -30,4 +29,11 @@ const validateNewUser = (req, res, next) => {
     next();
 };
 
-module.exports = validateNewUser;
+const validateLoginUser = (req, res, next) => {
+    req.body = lodash.pick(req.body, ['email', 'password']);
+
+    next();
+};
+
+module.exports.validateNewUser = validateNewUser;
+module.exports.validateLoginUser = validateLoginUser;
