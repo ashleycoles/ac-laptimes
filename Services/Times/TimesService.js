@@ -29,7 +29,67 @@ const findAllTimes = async (query) => {
     try {
         const db = client.db("times");
         let collection = db.collection('times');
-        return await collection.find(query).toArray();
+        console.log(query);
+        return await collection.aggregate([
+            {
+                '$match' : query
+            },
+            {
+                '$lookup': {
+                    'from': 'cars',
+                    'localField': 'cid',
+                    'foreignField': '_id',
+                    'as': 'car'
+                }
+            },
+            {
+                '$unwind': {
+                    'path': '$car',
+                    'preserveNullAndEmptyArrays': true
+                }
+            },
+            {
+                '$lookup': {
+                    'from': 'tracks',
+                    'localField': 'tid',
+                    'foreignField': '_id',
+                    'as': 'track'
+                }
+            },
+            {
+                '$unwind': {
+                    'path': '$track',
+                    'preserveNullAndEmptyArrays': true
+                }
+            },
+            {
+                '$lookup': {
+                    'from': 'users',
+                    'localField': 'uid',
+                    'foreignField': '_id',
+                    'as': 'user'
+                }
+            },
+            {
+                '$unwind': {
+                    'path': '$user',
+                    'preserveNullAndEmptyArrays': true
+                }
+            },
+            {
+                '$project':{
+                    '_id' : true,
+                    'car' : true,
+                    'track': true,
+                    'user': {
+                        '_id': true,
+                        'name': true,
+                        'email': true
+                    },
+                    'time': true
+                }
+            }
+        ]).toArray();
     } catch (err) {
         console.log(err);
     } finally {
