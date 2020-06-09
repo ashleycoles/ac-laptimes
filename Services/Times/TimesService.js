@@ -29,7 +29,6 @@ const findAllTimes = async (query) => {
     try {
         const db = client.db("times");
         let collection = db.collection('times');
-        console.log(query);
         return await collection.aggregate([
             {
                 '$match' : query
