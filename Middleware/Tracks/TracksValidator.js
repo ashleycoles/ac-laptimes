@@ -16,4 +16,4 @@ const validateNewTrack = (req, res, next) => {
     next();
 };
 
-module.exports = validateNewTrack;
+module.exports.validateNewTrack = validateNewTrack;

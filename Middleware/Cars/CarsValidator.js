@@ -23,4 +23,4 @@ const validateNewCar = (req, res, next) => {
     next();
 };
 
-module.exports = validateNewCar;
+module.exports.validateNewCar = validateNewCar;

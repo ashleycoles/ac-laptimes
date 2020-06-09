@@ -3,11 +3,10 @@ const UsersController = require('../Controllers/UsersController');
 const TracksController = require('../Controllers/TracksController');
 const CarsController = require('../Controllers/CarsController');
 
-const validateNewTrack = require('../Validators/Tracks/validateNewTrack');
-const validateNewCar = require('../Validators/Cars/validateNewCar');
-
-const TimesValidator = require('../Validators/Times/TimesValidator');
-const UsersValidator = require('../Validators/Users/UsersValidator');
+const TracksValidator = require('../Middleware/Tracks/TracksValidator');
+const CarsValidator = require('../Middleware/Cars/CarsValidator');
+const TimesValidator = require('../Middleware/Times/TimesValidator');
+const UsersValidator = require('../Middleware/Users/UsersValidator');
 
 const routes = (app) => {
     app.post('/times', TimesValidator.validateNewTime, TimesController.addTime);
@@ -16,9 +15,9 @@ const routes = (app) => {
     app.post('/users', UsersValidator.validateNewUser, UsersController.addUser);
     app.post('/users/login', UsersValidator.validateLoginUser, UsersController.loginUser);
 
-    app.post('/tracks', validateNewTrack, TracksController.addTrack);
+    app.post('/tracks', TracksValidator.validateNewTrack, TracksController.addTrack);
 
-    app.post('/cars', validateNewCar, CarsController.addCar);
+    app.post('/cars', CarsValidator.validateNewCar, CarsController.addCar);
 };
 
 module.exports = routes;
