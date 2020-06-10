@@ -18,6 +18,7 @@ const routes = (app) => {
     app.post('/users/login', UsersValidator.validateLoginUser, UsersController.loginUser);
 
     app.post('/tracks', TracksValidator.validateNewTrack, TracksController.addTrack);
+    app.get('/tracks', TracksController.getTracks);
 
     app.post('/cars', CarsValidator.validateNewCar, CarsController.addCar);
 };
