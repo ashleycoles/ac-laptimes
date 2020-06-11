@@ -22,6 +22,12 @@ const loginUser = (req, res) => {
                        message: "account logged in",
                        data: foundUser._id
                    });
+               } else {
+                   res.json({
+                       status: "failed",
+                       message: "account not recognised",
+                       data: ''
+                   });
                }
            });
         }
