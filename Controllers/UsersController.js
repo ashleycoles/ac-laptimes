@@ -25,7 +25,8 @@ const loginUser = (req, res) => {
                        status: "success",
                        message: "account logged in",
                        data: {
-                           accessToken: token
+                           accessToken: token,
+                           uid: foundUser._id
                        }
                    });
                } else {
