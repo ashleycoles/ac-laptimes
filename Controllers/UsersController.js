@@ -1,4 +1,5 @@
 const UsersService = require('../Services/Users/UsersService');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const addUser = (req, res) => {
@@ -14,13 +15,18 @@ const addUser = (req, res) => {
 const loginUser = (req, res) => {
     UsersService.loginUser(req.body).then((foundUser) => {
         if (foundUser) {
-            // ToDo: Put this somewhere better
            bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
                if (result) {
+                   let token = jwt.sign({
+                       sub: foundUser._id,
+                       username: foundUser.name
+                   }, 'supersecretkey', {expiresIn: "3 hours"});
                    res.json({
                        status: "success",
                        message: "account logged in",
-                       data: foundUser._id
+                       data: {
+                           accessToken: token
+                       }
                    });
                } else {
                    res.json({
