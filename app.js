@@ -5,7 +5,14 @@ const BodyParser = require('body-parser');
 const app = express()
 
 app.use(BodyParser.json());
-app.use(cors());
+
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200,
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 
 routes(app);
 
